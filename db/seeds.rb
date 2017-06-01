@@ -9,7 +9,26 @@
 User.destroy_all
 Playlist.destroy_all
 SuggestedSong.destroy_all
+Authorization.destroy_all
 
+
+User.create!(
+  first_name: "Bitmaker",
+  last_name: "Labs",
+  email: "bit@maker.com",
+  password: "password",
+  password_confirmation: "password",
+)
+
+9.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.free_email,
+    password: 'password',
+    password_confirmation: 'password',
+  )
+end
 
 Playlist.create!(
   name: "Views From The 6",
@@ -28,7 +47,7 @@ drake_songs.each do |song|
   SuggestedSong.create!(
     song_id: s[0],
     playlist_id: 1,
-    user_id: rand(1..10),
+    user_id: 1,
     name: s[2],
     net_vote: rand(1..10),
     artist: s[1],
@@ -55,7 +74,7 @@ kanye_songs.each do |song|
   SuggestedSong.create!(
     song_id: s[0],
     playlist_id: 2,
-    user_id: rand(1..10),
+    user_id: 1,
     name: s[2],
     net_vote: rand(1..10),
     artist: s[1],
@@ -81,7 +100,7 @@ electronic_music.each do |song|
   SuggestedSong.create!(
     song_id: s[0],
     playlist_id: 3,
-    user_id: rand(1..10),
+    user_id: 1,
     name: s[2],
     net_vote: rand(1..10),
     artist: s[1],
@@ -108,30 +127,12 @@ stephen_jam.each do |song|
   SuggestedSong.create!(
     song_id: s[0],
     playlist_id: 4,
-    user_id: rand(1..10),
+    user_id: 1,
     name: s[2],
     net_vote: rand(1..10),
     artist: s[1],
     user_name: Faker::Name.first_name,
     status: 'que',
-  )
-end
-
-User.create!(
-  first_name: "Bitmaker",
-  last_name: "Labs",
-  email: "bit@maker.com",
-  password: "password",
-  password_confirmation: "password",
-)
-
-9.times do
-  User.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.free_email,
-    password: 'password',
-    password_confirmation: 'password',
   )
 end
 
@@ -147,7 +148,7 @@ end
 
 20.times do
   Authorization.create!(
-  playlist_id: rand(1..14),
+  playlist_id: rand(1..4),
   user_id: rand(2..10),
   status: "Guest",
   )

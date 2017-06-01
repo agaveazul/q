@@ -11,7 +11,6 @@ $('document').ready(function(){
     },
 
     received: function(data) {
-      console.log(data);
       var userId = parseInt($('.delete_user_id').text());
       var regExp = /\d+/;
       if(regExp.exec(window.location.pathname) != null) {
@@ -123,10 +122,10 @@ $('document').ready(function(){
         if (song.playlist_id > 4) {
 
           if ((data[2] === userId) && (song.status != "playing")) {
-            $(div_replace).append('<a rel="nofollow" class="btn-flat waves-effect waves-light amber accent-4 delete-song" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"><i class="material-icons">delete</i></a>')
+            $(div_replace).append('<a class="btn-flat waves-effect waves-light amber accent-4 delete-song"><i class="material-icons">delete</i></a>')
           }
           else if ((song.user_id === userId) && song.status === "que") {
-            $(div_replace).append('<a rel="nofollow" class="btn-flat waves-effect waves-light amber accent-4 delete-song" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"><i class="material-icons">delete</i></a>')
+            $(div_replace).append('<a class="btn-flat waves-effect waves-light amber accent-4 delete-song"><i class="material-icons">delete</i></a>')
           }
 
           if (data[4].public == false) {

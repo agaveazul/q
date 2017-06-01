@@ -263,12 +263,12 @@ input#search {
 }
 
 .main-body {
-  background: url('pool.jpeg') center center fixed no-repeat;
+  background: url('https://static.pexels.com/photos/195280/pexels-photo-195280.jpeg') center center fixed no-repeat;
   background-size: cover;
 }
 
 #playlist-update-title, #join-title {
-  font-size: 60px;
+  font-size: 3.5rem;
 }
 
 nav {
@@ -472,17 +472,6 @@ button.downvote.btn.darken-2 {
       top: -2px;
       right: 7px;
   }
-  //
-  // a.delete-song {
-  //   position: absolute;
-  //   left: 57%;
-  //   top: 56%;
-  //   width: 20%;
-  //   height: 30px;
-  //   padding: 0px 0px 5px 6px;
-  //   color: white;
-  //   font-size: 10px;
-  // }
 
   a.btn-flat.delete-song {
       position: absolute;
@@ -872,4 +861,5 @@ html{
 
 li.guest{
   height: 3rem;
+  line-height: 2.75rem;
 }

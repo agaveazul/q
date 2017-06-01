@@ -1,5 +1,8 @@
 $(document).on("ready", function(){
 
+var regExp = /\d+/;
+var playlistId = parseInt(regExp.exec(window.location.pathname)[0]);
+
   $(window).scroll( function(){
       /* Check the location of each desired element */
       $('.hideme').each( function(i){
@@ -76,10 +79,23 @@ $(document).on("ready", function(){
   });
 
   $("body").delegate('.delete-song', 'click', function(event){
-    Materialize.toast("Song deleted!", 3000, 'red');
-
+    console.log('clicked')
+    $.ajax({
+       url:'/playlists/' + playlistId + '/suggestedsongs/' + $(this).parent().attr('data-suggested-song-id'),
+       method:'DELETE'
+    }).done(function(data){
+        Materialize.toast("Song deleted!", 3000, 'red');
+    })
   });
 
-
+  $("body").delegate('.delete-song-show', 'click', function(event){
+    console.log('clicked')
+    $.ajax({
+       url:'/playlists/' + playlistId + '/suggestedsongs/' + $(this).parent().parent().attr('data-suggested-song-id'),
+       method:'DELETE'
+    }).done(function(data){
+        Materialize.toast("Song deleted!", 3000, 'red');
+    })
+  });
 
 });

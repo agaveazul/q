@@ -101,18 +101,18 @@
             <% @vote_now = Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]).status %>
               <% if @vote_now == "up" %>
               <span class="contain">
-                <a href="/playlists/<%=@playlist_q.id%>/suggestedsongs/<%=song.id%>" rel="nofollow" class="btn-flat waves-effect waves-light amber accent-4 delete-song" data-method="delete"><i class="material-icons">delete</i></a>
+                <a class="btn-flat waves-effect waves-light amber accent-4 delete-song-show delete-song"><i class="material-icons">delete</i></a>
                 <span class="buttons"><button type="button" name="button" class="upvote btn-flat waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn waves-effect waves-light red lighten-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
               </span>
               <% elsif @vote_now == "down" %>
                 <span class="contain">
-                  <a href="/playlists/<%=@playlist_q.id%>/suggestedsongs/<%=song.id%>" rel="nofollow" class="btn-flat waves-effect waves-light amber accent-4 delete-song" data-method="delete"><i class="material-icons">delete</i></a>
+                  <a class="btn-flat waves-effect waves-light amber accent-4 delete-song-show delete-song"><i class="material-icons">delete</i></a>
                   <span class="buttons"><button type="button" name="button" class="upvote btn waves-effect waves-light blue lighten-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn-flat waves-effect waves-light red darken-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
                 </span>
               <% end %>
             <% else %>
               <span class="contain">
-                <a href="/playlists/<%=@playlist_q.id%>/suggestedsongs/<%=song.id%>" rel="nofollow" class="btn-flat waves-effect waves-light amber accent-4 delete-song" data-method="delete"><i class="material-icons">delete</i></a>
+                <a class="btn-flat waves-effect waves-light amber accent-4 delete-song-show delete-song"><i class="material-icons">delete</i></a>
                 <span class="buttons"><button type="button" name="button" class="upvote btn waves-effect waves-light blue lighten-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn waves-effect waves-light red lighten-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
               </span>
             <% end %>
@@ -123,7 +123,7 @@
             </span>
           <% else %> <!-- if song is played -->
             <span class="contain">
-              <a href="/playlists/<%=@playlist_q.id%>/suggestedsongs/<%=song.id%>" rel="nofollow" class="btn-flat waves-effect waves-light amber accent-4 delete-song" data-method="delete"><i class="material-icons">delete</i></a>
+              <a class="btn-flat waves-effect waves-light amber accent-4 delete-song-show delete-song"><i class="material-icons">delete</i></a>
               <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
             </span>
           <% end %> <!-- end of if the playlist is public/private -->
@@ -145,7 +145,7 @@
             <% else %>
               <span class="contain">
                 <% if (User.find(song.user_id).id == session[:user_id]) %>
-                  <a href="/playlists/<%=@playlist_q.id%>/suggestedsongs/<%=song.id%>" rel="nofollow" class="btn-flat waves-effect waves-light amber accent-4 delete-song" data-method="delete"><i class="material-icons">delete</i></a>
+                  <a class="btn-flat waves-effect waves-light amber accent-4 delete-song-show delete-song"><i class="material-icons">delete</i></a>
                 <% end %>
                 <span class="buttons"><button type="button" name="button" class="upvote btn waves-effect waves-light blue lighten-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn waves-effect waves-light red lighten-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
               </span>
