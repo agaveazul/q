@@ -1,7 +1,9 @@
 $(document).on("ready", function(){
 
 var regExp = /\d+/;
-var playlistId = parseInt(regExp.exec(window.location.pathname)[0]);
+if(regExp.exec(window.location.pathname) != null) {
+  var playlistId = parseInt(regExp.exec(window.location.pathname)[0]);
+}
 
   $(window).scroll( function(){
       /* Check the location of each desired element */
