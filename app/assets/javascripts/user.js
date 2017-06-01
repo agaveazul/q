@@ -6,9 +6,9 @@ $(document).on("ready", function(){
   });
 
   $('.guestlist-playlist').on('click', function(event) {
-    var regExp = /\d+/
-    var playlistId = parseInt(regExp.exec(window.location.pathname)[0])
-    event.preventDefault()
+    var regExp = /\d+/;
+    var playlistId = parseInt(regExp.exec(window.location.pathname)[0]);
+    event.preventDefault();
     $.ajax({
        url:'/playlists/' + playlistId + '/guestlist',
        method:'GET',

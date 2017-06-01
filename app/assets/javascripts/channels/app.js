@@ -14,7 +14,9 @@ $('document').ready(function(){
       console.log(data);
       var userId = parseInt($('.delete_user_id').text());
       var regExp = /\d+/;
-      var playlist_id = parseInt(regExp.exec(window.location.pathname)[0]);
+      if(regExp.exec(window.location.pathname) != null) {
+        var playlistId = parseInt(regExp.exec(window.location.pathname)[0]);
+      }
 
       if (data[0].id === playlist_id) {
         if (data[0].public) {  //public
