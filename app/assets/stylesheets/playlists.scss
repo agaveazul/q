@@ -1,10 +1,13 @@
 // Place all the styles related to the playlists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$player-white: #e8e8ec;
-$nav-grey: rgba(35, 35, 44, 0.39);
-
-
+$player-white: #7b8085;
+$nav-grey: white;
+$left_gradient: #f84696;
+$right_gradient: #c51fa2;
+$ltr_gradient: linear-gradient(to right, $left_gradient, $right_gradient);
+$main_text: #444444;
+$info_text:#f1469c;
 .back-button {
   width: 100%;
   color: black;
@@ -150,9 +153,7 @@ img.track-img {
   text-decoration: underline;
 }
 
-.playing {
-  background-color: #0ab091;
-}
+
 
 .intro-bio {
   font-size: 50px;
@@ -212,50 +213,78 @@ input#search {
 }
 
 .add-search-container {
-  opacity: 0.85;
+  text-align:center;
+  padding:20px 25px;
+  border-top:1px solid #e9e9f2;
+  border-bottom:1px solid #e9e9f2;
 }
 
 .add-search-container a {
   width: 100%;
+  background-image: linear-gradient(to top, $right_gradient, $left_gradient);
+  color:white;
+  padding-top:1.1rem;
+  padding-bottom:1.1rem;
+  font-size:1.1rem;
+  display:inline-block;
+  
 }
+.add-search-container a:hover {
 
-.add-search-container:hover {
-  width: 100%;
-  opacity: 1;
+  cursor:pointer;
 }
 
 .playlist-details {
-  background-color: rgba(0,0,0,0.8);
-  height: 3.2rem;
-  line-height: 2.5em;
+  background-color: white;
+  height: 6rem;
+  line-height: 1rem;
   width: 99.9%;
+  padding-top:25px;
 }
 .playlist-name {
-  color: white;
-  font-weight: bold;
-  display: inline-block;
-  padding-left: 1rem;
-  margin: 0.25rem;
-}
+  color: $main_text;
 
+  display: block;
+  padding-left: 1.6rem;
+  margin: 0.25rem;
+  font-size:1.3rem;
+  color: #444444;
+    display: block;
+    padding-left: 1.6rem;
+    margin: 0.25rem;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+.playlist-host{
+  padding-left:1.6rem;
+  display:block;
+}
 .playlist-description {
   color: white;
   // width: 33%;
   font-style: italic;
   display: inline-block;
 }
-
+.playlist-details-title{
+  display:inline-block;
+  
+}
 .playlist-code {
+  border:1px solid #e1dde8;
+  border-radius:39px;
+  font-size:13px;
+  padding: 10px;
   display: inline-block;
-  color: white;
+  margin:auto auto;
+  color: $main_text;
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  
 }
 
 #make-public {
-  float: right;
-  opacity: 0.85;
-  text-transform: capitalize;
-  margin: 0.25rem;
-  margin-right: 0;
+  
 }
 
 #make-public:hover {
@@ -263,7 +292,7 @@ input#search {
 }
 
 .main-body {
-  background: url('https://static.pexels.com/photos/195280/pexels-photo-195280.jpeg') center center fixed no-repeat;
+  background: white/* url('https://static.pexels.com/photos/195280/pexels-photo-195280.jpeg') center center fixed no-repeat*/;
   background-size: cover;
 }
 
@@ -272,7 +301,7 @@ input#search {
 }
 
 nav {
-  margin-bottom: 10px;
+ 
   background: #23232D;
   padding-left: 1rem;
 }
@@ -314,7 +343,7 @@ iframe {
 
 .song-in-queue {
   // background: white;
-  border-bottom: 1px solid rgba(232, 232, 236, 0.4);
+  border-bottom: 1px solid #e9e9f2;
   // border-left: 1px solid #cccccc;
   // border-right: 1px solid #cccccc;
   padding: 10px 1rem;
@@ -323,6 +352,9 @@ iframe {
   color: $player-white;
   overflow: hidden;
   position: relative;
+  .fa-volume-down, .fa-long-arrow-up, .fa-check{
+    font-size:1.2rem;
+  }
 }
 
 .upvote, .downvote {
@@ -349,7 +381,7 @@ button.downvote.btn.darken-2 {
 
 .song-list {
   z-index: 1;
-  background-color: rgba(30, 28, 39, 0.82);
+  background-color: white;
 };
 
 .added-by {
@@ -358,8 +390,45 @@ button.downvote.btn.darken-2 {
 
 .user_info {
   float: right;
-  padding-right: 20px;
-  margin: 0px;
+    padding-right: 20px;
+    margin: 0px;
+    line-height: 25px;
+    vertical-align:top;
+    
+    .user_info_left{
+      display:inline-block;
+    }
+  .user_image{
+    width:50px;
+  }
+  .user_info_right{
+    vertical-align:top;
+    display:inline-block;
+    padding-left:15px;
+    padding-right:15px;
+    padding-top:5px;
+    a{
+      display:block;
+      
+    }
+    .user_info_username{
+      background-image:$ltr_gradient;
+      color:transparent;
+      font-size:1.1rem;
+  -webkit-background-clip: text;
+  background-clip: text;
+    }
+    .user_edit{
+    font-size:0.9rem;
+    }
+  }
+  .user_info_dropdown{
+    display:inline-block;
+    vertical-align:top;
+    padding-top:5px;
+  }
+ 
+  
 }
 
 .buttons {
@@ -368,15 +437,52 @@ button.downvote.btn.darken-2 {
     bottom: 11%;
 }
 
-.heart {
-    position: absolute;
-    right: 20px;
-    bottom: 11px;
+.fa-heart{
+  color:#f75889;
+  
+}
+.fa-heart, .upvote, .downvote{
+  font-size:1.5rem;
+}
+.heart{
+  font-size:1.1rem;
+  
 }
 
 .nav_bar {
   background: $nav-grey;
+   padding-top:20px;
+  padding-bottom:20px;
+  height:90px;
+  color:#666666;
+  border-bottom:1px solid #e9e9f2;
+  box-shadow:none;
   // background: linear-gradient(to left, #dcb7a0, #aeaeae,#87b5b0)
+  .page_title{
+  display: inline-block;
+    .page_title_main{
+   
+  font-weight:300;
+      font-size:24px;
+      font-family: 'Montserrat', sans-serif;
+      margin-top:0;
+    }
+    .page_title_description{
+     font-family: 'Montserrat', sans-serif;
+  font-weight:300;
+      font-size:16px;
+      font-weight:300;
+      
+    }
+
+    
+  }
+  a{
+   color:#666666;
+    img{
+     width:50px;
+    }
+  }
 }
 
 .btn-flat {
@@ -399,7 +505,7 @@ button.downvote.btn.darken-2 {
     color: white;
   }
 
-  .guestuser-playlist{
+  .user-playlist{
     text-align: left;
     padding-top: 45px;
     position: absolute;
@@ -436,6 +542,7 @@ button.downvote.btn.darken-2 {
 
   span.guestlist-playlist {
     width: 50%;
+    
   }
 
   .guestlist-playlist {
@@ -445,9 +552,10 @@ button.downvote.btn.darken-2 {
   #make-public {
     float: none;
   }
-
+ 
   .playlist-name {
     padding-left: 0;
+    
   }
 
   //  Deezer Player
@@ -852,14 +960,138 @@ html{
 .guestlist-playlist:hover {
   opacity: 1;
 }
-
 .guestlist-playlist a {
-  text-decoration: none;
-  color: white;
-  text-transform: capitalize;
+   text-transform:uppercase;
+       background-image:$ltr_gradient;
+        color:transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      border-radius:40px;
+      padding:5px 10px;
+      z-index:1;
+      font-size:0.86rem;
+      position:relative;
+      margin-left:25px;
+      margin-right:25px;
+      
 }
-
+.guestlist-playlist a:after{
+           z-index: -1;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    left: 1px;
+    background-color: white;
+    position: absolute;
+    content: '';
+    border-radius: 34px;
+      }
+      .guestlist-playlist a:before {
+    z-index: -2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: inherit;
+    position: absolute;
+    content: '';
+    border-radius:34px;
+}
 li.guest{
   height: 3rem;
   line-height: 2.75rem;
+}
+ .make_public_wrapper{
+    float: right;
+  opacity: 0.85;
+  text-transform: capitalize;
+  margin: 0.25rem;
+  margin-right: 0;
+  }
+.container{
+  border-left:1px solid #e1dde8;
+  border-right:1px solid #e1dde8;
+}
+.playlist-code-numbers, .playlist-host-username, .playing>.song-name, .song-added-by-user, .fa-volume-down{
+    color:$info_text;
+}
+.fa-long-arrow-up{
+  color:#2498fa;
+}
+.fa-check{
+  color:#944c9e;
+}
+
+.thumb_btn{
+    box-shadow: none;
+    background-color: transparent;
+    color: #808080;
+    cursor: pointer;
+    transition: background-color .2s;
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+   
+    padding: .33rem 0.8rem;
+    text-transform: uppercase;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+}
+.delete_song_btn{
+  color:#f35058;
+  border: 1px solid #f35058;
+  text-transform: none;
+  font-size:0.9rem;
+  margin-left:5rem;
+}
+.upvote.voted{
+  color:#2498fa;
+}
+.downvote.voted{
+  color: #E57373;
+}
+.toggle_button{
+      width: 55px;
+    height: 27px;
+    border-radius: 30px;
+    
+    background: #e9e9f2;
+    position: relative;
+        padding: 5px 10px;
+    display: inline-block;
+     transition: backgorund-image .2s linear;
+}
+.toggle_button>i.fa-check{
+  display:none;
+}
+.toggle_button.active{
+  background: linear-gradient(to right, #f84696, #c51fa2);
+}
+.toggle_button.active>i.fa-check{
+  display:initial;
+  color:white;
+}
+.toggle_button:after{
+         content: '';
+    width: 21px;
+    height: 21px;
+    border-radius: 24px;
+    background-color: white;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+  
+    transition: left .2s linear;
+    
+}
+.toggle_button:hover{
+  cursor:pointer;
+}
+.toggle_button.active:after{
+  left:32px;
+ 
+}
+.netvote{
+  display: inline-block;
+    width: 20px;
 }

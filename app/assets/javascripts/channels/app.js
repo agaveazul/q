@@ -19,21 +19,24 @@ $('document').ready(function(){
 
       if (data[0].id === playlist_id) {
         if (data[0].public) {  //public
-          $('#make-public').html('Locked');
-          $('#make-public').toggleClass('active');
+          console.log('we are public now')
+          $('#make-public').addClass('active');
+         
+          
           $('.que').find('.buttons').addClass('hidden');
           if (userId != data[2])  { //if guest or viewer
             $('.add-search-container').addClass('hidden');
             $('.song-in-queue').children('a').addClass('hidden')
           }
           else { //if host
-            $('.playing').children('a').addClass('hidden');
+            
           }
         }
         else if (data[0].public === false) { //private
           console.log('we are going private');
-          $('#make-public').html('All Access');
-          $('#make-public').toggleClass('active');
+         
+          $('#make-public').removeClass('active');
+         
           $('.add-search-container').removeClass('hidden');
         }
       }
@@ -83,17 +86,17 @@ $('document').ready(function(){
             }
 
             var span = $('<span>').attr('class',"buttons");
-            var buttonUp = $('<button>').attr('type',"button").attr('name','button').attr('class','upvote btn waves-effect waves-light blue lighten-2');
-            var buttonDown = $('<button>').attr('type',"button").attr('name','button').attr('class','downvote btn waves-effect waves-light red lighten-2');
+            var buttonUp = $('<button>').attr('type',"button").attr('name','button').attr('class','upvote thumb_btn');
+            var buttonDown = $('<button>').attr('type',"button").attr('name','button').attr('class','downvote thumb_btn');
 
             data[3].forEach(function(vote) {
               if ((vote.suggestedsong_id === song.id) && (vote.user_id === userId)){
                 if (vote.status === "up"){
-                  $(buttonUp).addClass('btn-flat darken-2');
+                  $(buttonUp).addClass('voted');
 
                 }
                 else {
-                  $(buttonDown).addClass('btn-flat darken-2');
+                  $(buttonDown).addClass('voted');
 
                 }
                 }
@@ -107,25 +110,25 @@ $('document').ready(function(){
             var downButton = $(buttonDown).append(iconDown);
           }
         var spanHeart = $('<span>').attr('class','heart');
-        var iconHeart = $('<i>').attr('class','fa fa-heart').attr('style','font-size:12px');
+        var iconHeart = $('<i>').attr('class','fa fa-heart');
         var netVote = $('<span>').attr('class','netvote').attr('id',song.id).html(song.net_vote);
 
-        var heart = $(spanHeart).append(netVote).append(" ").append(iconHeart);
+        var heart = $(spanHeart).append(iconHeart).append(" ").append(netVote);
 
 
 
         var votes = $(span).append(upButton).append(" ").append(downButton);
         var divSong = $(divContainer).html(song.name + ' - ' + song.artist);
-        var spanAdd = $('<span>').html("<br/>" + ' Added By: ' + song.user_name).addClass('added-by');
+        var spanAdd = $('<span>').html("<br/>" + ' Added By: <span class=\'song-added-by-user\'>' + song.user_name+'</span>').addClass('added-by');
         var div_replace = $(divSong).append(spanAdd)
-
+         votes.append(heart);
         if (song.playlist_id > 4) {
 
-          if ((data[2] === userId) && (song.status != "playing")) {
-            $(div_replace).append('<a class="btn-flat waves-effect waves-light amber accent-4 delete-song"><i class="material-icons">delete</i></a>')
+          if ((data[2] === userId))) {
+            votes.append('<a class="thumb_btn delete_song_btn delete-song-show delete-song">Delete</a>')
           }
           else if ((song.user_id === userId) && song.status === "que") {
-            $(div_replace).append('<a class="btn-flat waves-effect waves-light amber accent-4 delete-song"><i class="material-icons">delete</i></a>')
+           votes.append('<a class="thumb_btn delete_song_btn delete-song-show delete-song">Delete</a>')
           }
 
           if (data[4].public == false) {
@@ -134,7 +137,7 @@ $('document').ready(function(){
           }
 
         }
-        $(div_replace).append(heart);
+       
         $(div_replace).appendTo('.song-list');
 
         })
