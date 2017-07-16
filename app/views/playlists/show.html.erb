@@ -11,7 +11,11 @@
   <div class="playlist-details">
     <div class="playlist-details-title">
   <div class="playlist-name">&nbsp<%= @playlist_q.name %>&nbsp</div>
+<<<<<<< HEAD
   <div class="playlist-host">&nbsp Host: <span class="playlist-host-username">Host_user</span></div>
+=======
+  <div class="playlist-host">&nbsp Host: <span class="playlist-host-username"><%= "#{@host.first_name} #{@host.last_name}" %></span></div>
+>>>>>>> bcd449fd5fe57ddbf99ee6c3e358cb1b09e913dc
   </div>
   <div class="playlist-code center-align">&nbsp Invite Other With:<span class="playlist-code-numbers"> <%=@playlist_q.access_code%></span></div> <% if @access == "Host" || @access == "Guest" %>
   <% if @access == "Host" %>

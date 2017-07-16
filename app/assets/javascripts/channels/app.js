@@ -124,7 +124,11 @@ $('document').ready(function(){
          votes.append(heart);
         if (song.playlist_id > 4) {
 
+<<<<<<< HEAD
           if ((data[2] === userId))) {
+=======
+          if ((data[2] === userId)) {
+>>>>>>> bcd449fd5fe57ddbf99ee6c3e358cb1b09e913dc
             votes.append('<a class="thumb_btn delete_song_btn delete-song-show delete-song">Delete</a>')
           }
           else if ((song.user_id === userId) && song.status === "que") {
