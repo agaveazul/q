@@ -490,178 +490,8 @@ button.downvote.btn.darken-2 {
   color: white;
 }
 
-@media (max-width: 480px) {
-  .playlist-code {
-    display: block;
-    text-align: center;
-  }
 
-  .hosteduser-playlist{
-    text-align: left;
-    padding-top: 45px;
-    position: absolute;
-    top: 19%;
-    left: 2%;
-    color: white;
-  }
 
-  .user-playlist{
-    text-align: left;
-    padding-top: 45px;
-    position: absolute;
-    top: 33%;
-    left: 2%;
-    color: white;
-  }
-
-  .hosted-playlist {
-    border: rgba(74, 199, 164, 0.9) 1px solid;
-    opacity: 0.7;
-    height: 10rem;
-    position: relative;
-    margin-bottom: 0px;
-  }
-
-  .guest-playlist {
-    border: rgba(232, 2, 103,0.9) 1px solid;
-    opacity: 0.7;
-    height: 10rem;
-    position: relative;
-    margin-bottom: 0px;
-  }
-
-  i.material-icons.front-pg-symbol {
-    position: relative;
-}
-
-  .playlist-details {
-    text-align: center;
-    height: 100%;
-    line-height: 20px;
-  }
-
-  span.guestlist-playlist {
-    width: 50%;
-    
-  }
-
-  .guestlist-playlist {
-    float: none;
-  }
-
-  #make-public {
-    float: none;
-  }
- 
-  .playlist-name {
-    padding-left: 0;
-    
-  }
-
-  //  Deezer Player
-  div#d_player {
-      height: 62px;
-  }
-
-  //vote
-  .buttons {
-    display: block;
-    position: inherit;
-    right: 0;
-    bottom: -4px;
-  }
-
-  button.upvote, button.downvote {
-    position: relative;
-  }
-
-  .delete-song i {
-      position: absolute;
-      top: -2px;
-      right: 7px;
-  }
-
-  a.btn-flat.delete-song {
-      position: absolute;
-      color: white;
-      opacity: 0.7;
-      // left: 45%;
-      height: 30px;
-      top: 60px;
-      right: 56px;
-      padding: 16px;
-  }
-
-  .song-in-queue.played a.delete-song, .song-in-queue.playing a.delete-song  {
-    top: 48%;
-    right: 55px;
-  }
-
-  .song-in-queue.que {
-    height: 7rem;
-  }
-
-  .song-in-queue.played, .song-in-queue.playing {
-    height: 5rem;
-  }
-
-  // 4 Star Playlists
-  .song-in-queue.public-que {
-      height: 4rem;
-  }
-
-  .public-que .heart {
-    bottom: 4px;
-  }
-
-  // span.buttons {
-  //   display: inline-block;
-  //   position: relative;
-  //   left: 39%;
-  //   bottom: 9%;
-  // }
-
-}
-
-@media (min-width: 481px) {
-  .edit-delete {
-    text-align: center;
-    opacity: 1;
-  }
-  .hosted-playlist {
-    border: rgba(74, 199, 164, 0.9) 1px solid;
-    opacity: 0.7;
-    height: 12rem;
-    position: relative;
-    margin-bottom: 0px;
-  }
-
-  .guest-playlist {
-    border: rgba(232, 2, 103,0.9) 1px solid;
-    opacity: 0.7;
-    height: 12rem;
-    position: relative;
-    margin-bottom: 0px;
-  }
-
-  .hosteduser-playlist{
-    text-align: left;
-    padding-top: 45px;
-    position: absolute;
-    top: 32%;
-    left: 2%;
-    color: white;
-  }
-
-  .guestuser-playlist{
-    text-align: left;
-    padding-top: 50px;
-    position: absolute;
-    top: 44%;
-    left: 2%;
-    color: white;
-  }
-}
 
 @media (min-width: 0px) and (max-width: 599px) {
  .q-instructions, .q-description {
@@ -967,7 +797,7 @@ html{
       -webkit-background-clip: text;
       background-clip: text;
       border-radius:40px;
-      padding:5px 10px;
+      padding:5px 20px;
       z-index:1;
       font-size:0.86rem;
       position:relative;
@@ -1041,8 +871,9 @@ li.guest{
   color:#f35058;
   border: 1px solid #f35058;
   text-transform: none;
-  font-size:0.9rem;
+  font-size:1.5rem;
   margin-left:5rem;
+      padding: 0.1rem 2rem;
 }
 .upvote.voted{
   color:#2498fa;
@@ -1060,6 +891,7 @@ li.guest{
         padding: 5px 10px;
     display: inline-block;
      transition: backgorund-image .2s linear;
+     margin-left:1rem;
 }
 .toggle_button>i.fa-check{
   display:none;
@@ -1094,4 +926,233 @@ li.guest{
 .netvote{
   display: inline-block;
     width: 20px;
+}
+
+@media (min-width: 481px) {
+  .edit-delete {
+    text-align: center;
+    opacity: 1;
+  }
+
+  .hosted-playlist {
+    border: rgba(74, 199, 164, 0.9) 1px solid;
+    opacity: 0.7;
+    height: 12rem;
+    position: relative;
+    margin-bottom: 0px;
+  }
+
+  .guest-playlist {
+    border: rgba(232, 2, 103,0.9) 1px solid;
+    opacity: 0.7;
+    height: 12rem;
+    position: relative;
+    margin-bottom: 0px;
+  }
+
+  .hosteduser-playlist{
+    text-align: left;
+    padding-top: 45px;
+    position: absolute;
+    top: 32%;
+    left: 2%;
+    color: white;
+  }
+
+  .guestuser-playlist{
+    text-align: left;
+    padding-top: 50px;
+    position: absolute;
+    top: 44%;
+    left: 2%;
+    color: white;
+  }
+}
+@media (max-width: 480px) {
+  .user_info{
+    display:none;
+  }
+  .user_info_mob{
+    float:right;
+    font-size:2rem;
+    margin-right:25px;
+  }
+  .user_menu_mob{
+    float:left;
+    font-size:2rem;
+    margin-left:25px;
+  }
+  .playlist-details-title{
+    text-align: left;
+    
+  }
+  .playlist-host{
+      padding-left: 0;
+    }
+  .playlist-code {
+    display: inline-block;
+    position:relative;
+    border: none;
+    text-align: center;
+    transform:none;
+    left:0;
+  }
+.make_public_wrapper{
+  float:none;
+  display: inline-block !important;
+}
+  .hosteduser-playlist{
+    text-align: left;
+    padding-top: 45px;
+    position: absolute;
+    top: 19%;
+    left: 2%;
+    color: white;
+  }
+
+  .user-playlist{
+    text-align: left;
+    padding-top: 45px;
+    position: absolute;
+    top: 33%;
+    left: 2%;
+    color: white;
+  }
+
+  .hosted-playlist {
+    border: rgba(74, 199, 164, 0.9) 1px solid;
+    opacity: 0.7;
+    height: 10rem;
+    position: relative;
+    margin-bottom: 0px;
+  }
+
+  .guest-playlist {
+    border: rgba(232, 2, 103,0.9) 1px solid;
+    opacity: 0.7;
+    height: 10rem;
+    position: relative;
+    margin-bottom: 0px;
+  }
+
+  i.material-icons.front-pg-symbol {
+    position: relative;
+}
+
+  .playlist-details {
+
+    height: 100%;
+    line-height: 20px;
+   
+    text-align:left;
+    padding-bottom:20px;
+  
+  }
+
+  span.guestlist-playlist {
+    width: 50%;
+    
+  }
+
+  .guestlist-playlist {
+    float: none;
+  }
+
+  #make-public {
+    float: none;
+    text-align:left;
+  }
+ 
+  .playlist-name {
+    padding-left: 0;
+    
+  }
+
+  //  Deezer Player
+  div#d_player {
+      height: 62px;
+      display:none;
+  }
+
+  //vote
+  .buttons {
+        float: right;
+    width: 100px;
+    display: inline-block;
+    /* font-size: 5px; */
+    top: 0;
+    right:0;
+    
+    
+  }
+  
+  .guestlist-playlist a {
+    border-radius: 0;
+    color:white;
+   -webkit-background-clip: initial; 
+    background-clip: initial;
+    padding:10px 30px;
+    margin-left:0;
+    float:right;
+  }
+  .guestlist-playlist a:after {
+    background-color:transparent;
+  }
+  button.upvote, button.downvote {
+    position: relative;
+  }
+  .delete_song_btn{
+    border:none;
+    margin-left:0;
+    
+  }
+  .fa-heart{
+    font-size:1.1rem;
+  }
+
+  .delete-song i {
+     font-size:1.5rem;
+  }
+  .thumb_btn{
+    padding:0.15rem 0.4rem;
+    line-height:1;
+  }
+  .netvote{
+    width:10px;
+    font-size:0.8em;
+  }
+
+
+  .song-in-queue.played a.delete-song, .song-in-queue.playing a.delete-song  {
+    top: 48%;
+    right: 55px;
+  }
+
+  .song-in-queue.que {
+    height: 7rem;
+  }
+
+  .song-in-queue.played, .song-in-queue.playing {
+    height: 5rem;
+  }
+
+  // 4 Star Playlists
+  .song-in-queue.public-que {
+      height: 4rem;
+  }
+
+  .public-que .heart {
+    bottom: 4px;
+  }
+  .added-by{
+    padding-left: 1.5rem;
+  }
+  
+  // span.buttons {
+  //   display: inline-block;
+  //   position: relative;
+  //   left: 39%;
+  //   bottom: 9%;
+  // }
+
 }
