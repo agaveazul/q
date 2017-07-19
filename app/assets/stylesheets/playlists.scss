@@ -967,6 +967,9 @@ li.guest{
     left: 2%;
     color: white;
   }
+  .user_info_mob, .user_menu_mob{
+    display:none;
+  }
 }
 @media (max-width: 480px) {
   .user_info{
