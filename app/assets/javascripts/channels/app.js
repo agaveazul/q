@@ -35,7 +35,8 @@ $('document').ready(function(){
         }
       }
 
-      if (data[0].playlist_id === playlist_id) {
+      if (data[0][0].playlist_id === playlist_id) {
+        
       if (data[1] === "restart") {
         console.log('we are in restarting');
         var nextSong = data[0][data[0].length - 1].song_id;
@@ -62,7 +63,11 @@ $('document').ready(function(){
             });
         }
         $('.song-list').html('');
-        //declaring reusable elements
+       
+       
+        console.log("sorted")
+        data[0].forEach(function(song) {
+          //declaring reusable elements
         var span = $('<span>').attr('class',"buttons");
         var buttonUp = $('<button>').attr('type',"button").attr('name','button').attr('class','upvote thumb_btn');
         var buttonDown = $('<button>').attr('type',"button").attr('name','button').attr('class','downvote thumb_btn');
@@ -75,19 +80,17 @@ $('document').ready(function(){
         var spanHeart = $('<span>').attr('class','heart');
         var iconHeart = $('<i>').attr('class','fa fa-heart');
         var votes = $(span).append(upButton).append(" ").append(downButton);
-        data[0].forEach(function(song) {
-          
           if (song.status === "played") {
-            var divContainer = $('<div>').attr('class', 'song-in-queue played').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id);
+            var divContainer = $('<div>').attr('class', 'song-in-queue played').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id).html('<i class="fa fa-check" aria-hidden="true"></i>'+song.name + ' - ' + song.artist);
           }
           else if (song.status === "playing") {
-            var divContainer = $('<div>').attr('class', 'song-in-queue playing').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id);
+            var divContainer = $('<div>').attr('class', 'song-in-queue playing').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id).html('<i class="fa fa-volume-down" aria-hidden="true"></i>'+song.name + ' - ' + song.artist);;
           } else if (song.status === "que") {
             // First 4 star playlist apply pulic-que
             if (data[4].id < 4 ){
-              var divContainer = $('<div>').attr('class', 'song-in-queue que public-que').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id).attr('data-deezer-id',song.song_id);
+              var divContainer = $('<div>').attr('class', 'song-in-queue que public-que').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id).attr('data-deezer-id',song.song_id).html('<i class="fa fa-long-arrow-up" aria-hidden="true"></i>'+song.name + ' - ' + song.artist);;
             } else {
-              var divContainer = $('<div>').attr('class', 'song-in-queue que').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id).attr('data-deezer-id',song.song_id);
+              var divContainer = $('<div>').attr('class', 'song-in-queue que').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id).attr('data-deezer-id',song.song_id).html('<i class="fa fa-long-arrow-up" aria-hidden="true"></i>'+song.name + ' - ' + song.artist);;
             }
 
           
@@ -96,11 +99,9 @@ $('document').ready(function(){
               if ((vote.suggestedsong_id === song.id) && (vote.user_id === userId)){
                 if (vote.status === "up"){
                   $(buttonUp).addClass('voted');
-
                 }
                 else {
                   $(buttonDown).addClass('voted');
-
                 }
                 }
               }
@@ -108,32 +109,33 @@ $('document').ready(function(){
 
            
           
-    
+          }    
         var netVote = $('<span>').attr('class','netvote').attr('id',song.id).html(song.net_vote);
-}
+
         var heart = $(spanHeart).append(iconHeart).append(" ").append(netVote);
 
 
 
         
-        var divSong = $(divContainer).html(song.name + ' - ' + song.artist);
+        var divSong = $(divContainer);
         var spanAdd = $('<span>').html("<br/>" + ' Added By: <span class=\'song-added-by-user\'>' + song.user_name+'</span>').addClass('added-by');
         var div_replace = $(divSong).append(spanAdd)
-         votes.append(heart);
+        votes.append(heart);
         if (song.playlist_id > 4) {
 
           if ((data[2] === userId)) {
-            votes.append('<a class="thumb_btn delete_song_btn delete-song-show delete-song">Delete</a>')
+            votes.append('<a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a>')
           }
           else if ((song.user_id === userId) && song.status === "que") {
-           votes.append('<a class="thumb_btn delete_song_btn delete-song-show delete-song">Delete</a>')
+           votes.append('<a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a>')
           }
 
-          if (data[4].public == false) {
+          if (data[4].public === true) {
             console.log('did we get here?');
           $(div_replace).append(votes);
           }
         }
+     
         $(div_replace).appendTo('.song-list');
 
         })
