@@ -12,7 +12,7 @@ $('document').ready(function(){
       if(regExp.exec(window.location.pathname) != null) {
         var playlist_id = parseInt(regExp.exec(window.location.pathname)[0]);
       }
-      console.log(data);
+      console.log( data);
       if (data[0].id === playlist_id) {
         if (data[0].public) {  //public
          
@@ -107,10 +107,10 @@ $('document').ready(function(){
             )
 
            
-          }
+          
     
         var netVote = $('<span>').attr('class','netvote').attr('id',song.id).html(song.net_vote);
-
+}
         var heart = $(spanHeart).append(iconHeart).append(" ").append(netVote);
 
 

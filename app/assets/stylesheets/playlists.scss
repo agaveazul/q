@@ -568,7 +568,13 @@ button.downvote.btn.darken-2 {
     color: white;
     opacity: 1;
   }
-
+  .brand-logo{
+    transform:none !important
+    
+    
+    ;
+    left: 5% !important;
+  }
  .search-container {
    width: 84.95%;
  }
@@ -1081,7 +1087,9 @@ li.guest{
   .buttons {
         float: right;
     width: 100px;
-    display: inline-block;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
     /* font-size: 5px; */
     top: 0;
     right:0;

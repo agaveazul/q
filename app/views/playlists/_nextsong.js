@@ -19,8 +19,8 @@ $.ajax({
   }).done(function(data){
     console.log("Update song to playing");
     
-    $('.playing').first().addClass('que').removeClass('playing');
-    $('.que .fa-volume-down').removeClass('fa-volume-down').addClass('fa-long-arrow-up');
+    $('.playing').first().addClass('played').removeClass('playing');
+    $('.played .fa-volume-down').removeClass('fa-volume-down').addClass('fa-check');
     $('.que').first().addClass('playing').removeClass('que');
     $('.playing .fa-long-arrow-up').removeClass('fa-long-arrow-up').addClass('fa-volume-down');
   });
