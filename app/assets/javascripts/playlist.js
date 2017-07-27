@@ -83,7 +83,7 @@ if(regExp.exec(window.location.pathname) != null) {
   $("body").delegate('.delete-song', 'click', function(event){
     console.log('clicked')
     $.ajax({
-       url:'/playlists/' + playlistId + '/suggestedsongs/' + $(this).parent().attr('data-suggested-song-id'),
+       url:'/playlists/' + playlistId + '/suggestedsongs/' + $(this).parent().parent().attr('data-suggested-song-id'),
        method:'DELETE'
     }).done(function(data){
         Materialize.toast("Song deleted!", 3000, 'red');

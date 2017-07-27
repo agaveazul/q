@@ -68,6 +68,7 @@ $('document').ready(function(){
         console.log("sorted")
         data[0].forEach(function(song) {
           //declaring reusable elements
+     
         var span = $('<span>').attr('class',"buttons");
         var buttonUp = $('<button>').attr('type',"button").attr('name','button').attr('class','upvote thumb_btn');
         var buttonDown = $('<button>').attr('type',"button").attr('name','button').attr('class','downvote thumb_btn');
@@ -124,10 +125,10 @@ $('document').ready(function(){
         if (song.playlist_id > 4) {
 
           if ((data[2] === userId)) {
-            votes.append('<a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a>')
+            votes.append('<a class="thumb_btn delete_song_btn  delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a>')
           }
           else if ((song.user_id === userId) && song.status === "que") {
-           votes.append('<a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a>')
+           votes.append('<a class="thumb_btn delete_song_btn  delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a>')
           }
 
           if (data[4].public === true) {
