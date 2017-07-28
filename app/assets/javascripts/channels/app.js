@@ -121,9 +121,9 @@ $('document').ready(function(){
         var divSong = $(divContainer);
         var spanAdd = $('<span>').html("<br/>" + ' Added By: <span class=\'song-added-by-user\'>' + song.user_name+'</span>').addClass('added-by');
         var div_replace = $(divSong).append(spanAdd)
-        votes.append(heart);
+        
         if (song.playlist_id > 4) {
-
+votes.append(heart);
           if ((data[2] === userId)) {
             votes.append('<a class="thumb_btn delete_song_btn  delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a>')
           }
@@ -136,7 +136,11 @@ $('document').ready(function(){
           $(div_replace).append(votes);
           }
         }
-     
+        else {
+          heart.addClass('buttons')
+          $(div_replace).append(heart);
+        }
+        
         $(div_replace).appendTo('.song-list');
 
         })
