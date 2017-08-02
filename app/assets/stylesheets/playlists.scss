@@ -1096,7 +1096,9 @@ li.guest{
     
     
   }
-  
+  .buttons *{
+    flex-grow:1;
+  }
   .guestlist-playlist a {
     border-radius: 0;
     color:white;
@@ -1118,7 +1120,7 @@ li.guest{
     
   }
   .fa-heart{
-    font-size:1.1rem;
+    font-size:1.5rem;
   }
 
   .delete-song i {
@@ -1130,10 +1132,13 @@ li.guest{
   }
   .netvote{
     width:10px;
-    font-size:0.8em;
+    font-size:1em;
   }
 
-
+  .heart{
+    padding:0.15rem 0.4rem;
+    text-align: center;
+  }
   .song-in-queue.played a.delete-song, .song-in-queue.playing a.delete-song  {
     top: 48%;
     right: 55px;
