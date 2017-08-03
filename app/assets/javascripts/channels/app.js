@@ -145,20 +145,21 @@ $('document').ready(function(){
         var spanAdd = $('<span>').html("<br/>" + ' Added By: <span class=\'song-added-by-user\'>' + song.user_name + '</span>').addClass('added-by');
         var div_replace = $(divSong).append(spanAdd)
         votes.append(heart);
-        if (song.playlist_id > 4) {
+        $(div_replace).append(votes);
+        //if (song.playlist_id > 4) {
 
           if ((data[2] === userId) || (song.user_id === userId)) {
             votes.append('<a class="thumb_btn delete_song_btn  delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a>')
           }
         
+          //
+          // if (data[4].public == false) {
+          //   console.log('did we get here?');
+          // $(div_replace).append(votes);
+          // }
 
-          if (data[4].public == false) {
-            console.log('did we get here?');
-          $(div_replace).append(votes);
-          }
+        //}
 
-        }
-      
         $(div_replace).appendTo('.song-list');
 
         })
