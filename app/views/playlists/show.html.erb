@@ -9,17 +9,16 @@
 
   <div>
   <div class="playlist-details">
-  <div class="playlist-name">&nbsp<%= @playlist_q.name %>&nbsp</div><div class="playlist-description">&nbsp<%= @playlist_q.description %>&nbsp</div>
-  <div class="playlist-code">&nbsp Access Code: <%=@playlist_q.access_code%></div> <% if @access == "Host" || @access == "Guest" %>
+    <div class="playlist-details-title">
+  <div class="playlist-name">&nbsp<%= @playlist_q.name %>&nbsp</div>
+  <div class="playlist-host">&nbsp Host: <span class="playlist-host-username"><%= "#{@host.first_name} #{@host.last_name}" %></span></div>
+  </div>
+  <div class="playlist-code center-align">&nbsp Invite Other With:<span class="playlist-code-numbers"> <%=@playlist_q.access_code%></span></div> <% if @access == "Host" || @access == "Guest" %>
   <% if @access == "Host" %>
 
-  <span class="guestlist-playlist"><a class="waves-effect waves-light btn cyan darken-4" href='#modal1'>Guest List</a></span>
-  <span><a id="make-public" class="waves-effect waves-light btn teal accent-4">
-    <%if @playlist_q.public %>
-    <%= "Locked" %>
-    <% else %>
-    <%= "All Access" %>
-    <% end %>
+  <span class="guestlist-playlist"><a class="guestlist_button" href='#modal1'>Guest List</a></span>
+  <span class="make_public_wrapper valign-wrapper">All Access<a id="make-public" class="toggle_button <%= if @playlist_q.public; 'active' end%>">
+    <i class="fa fa-check"></i>
   </a></span>
 </div>
  <% end %>
@@ -46,13 +45,15 @@
   <script type="text/javascript">
     <%= render :partial => "nextsong.js" %>
   </script>
-
-  <% if (@playlist_q.public) && (@access == "Guest" || @access == "Viewer") %>
-  <div class="hidden add-search-container">
-    <a class=" waves-effect waves-light btn pink darken-1">Add a song</a>
-  <% else %>
+  <% if @access == "Host" %>
+    <div class="add-search-container">
+    <a class="add-search-button">Add A Song</a> 
+  <% elsif (@playlist_q.public) && (@access == "Guest" || @access == "Viewer") %>
   <div class="add-search-container">
-    <a class="waves-effect waves-light btn pink darken-1">Add a song</a>
+    <a class="add-search-button">Add A Song</a> 
+  <% else %>
+  <div class="add-search-container hidden">
+    <a class="add-search-button">Add A Song</a>
   <% end %>
 </div>
 
@@ -80,52 +81,55 @@
 
     <% if song.status == "played" %>
       <div class="song-in-queue played" data-playlist-id=<%=@playlist_q.id%> data-suggested-song-id=<%= song.id %>>
+        <i class="fa fa-check" aria-hidden="true"></i>
+     
     <% elsif song.status == "playing" %>
       <div class="song-in-queue playing" data-playlist-id=<%=@playlist_q.id%> data-suggested-song-id=<%= song.id %>>
+        <i class="fa fa-volume-down" aria-hidden="true"></i>
+     
     <% else %>
       <div class="song-in-queue que" data-playlist-id=<%=@playlist_q.id%> data-suggested-song-id=<%= song.id %>>
+        <i class="fa fa-long-arrow-up" aria-hidden="true"></i>
+       
     <% end %>
 
 
-    <%= song.name %> - <%= song.artist %><br/>
-    <span class="added-by">Added By: <%= User.find(song.user_id).first_name %></span>
+   <span class="song-name"><%= song.name %> - <%= song.artist %></span><br/>
+    <span class="added-by">Added By: <span class="song-added-by-user"><%= User.find(song.user_id).first_name %></span></span>
 
       <% if (@access == "Host") %> <!-- if the user is host -->
         <% if @playlist_q.public %>
-          <span class="contain">
-            <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn-flat waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote  btn waves-effect waves-light red lighten-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
-          </span>
+         
+            <span class=" buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn  delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a></span> &nbsp
+       
         <%else %>
           <% if song.status == "que" %>
             <% if Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]) %>
             <% @vote_now = Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]).status %>
               <% if @vote_now == "up" %>
-              <span class="contain">
-                <a class="btn-flat waves-effect waves-light amber accent-4 delete-song-show delete-song"><i class="material-icons">delete</i></a>
-                <span class="buttons"><button type="button" name="button" class="upvote btn-flat waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn waves-effect waves-light red lighten-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
-              </span>
+            
+                
+                <span class="buttons"><button type="button" name="button" class="upvote voted thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a></span> &nbsp
+        
               <% elsif @vote_now == "down" %>
-                <span class="contain">
-                  <a class="btn-flat waves-effect waves-light amber accent-4 delete-song-show delete-song"><i class="material-icons">delete</i></a>
-                  <span class="buttons"><button type="button" name="button" class="upvote btn waves-effect waves-light blue lighten-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn-flat waves-effect waves-light red darken-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
-                </span>
+                
+                <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote voted thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a></span> &nbsp
+               
               <% end %>
             <% else %>
-              <span class="contain">
-                <a class="btn-flat waves-effect waves-light amber accent-4 delete-song-show delete-song"><i class="material-icons">delete</i></a>
-                <span class="buttons"><button type="button" name="button" class="upvote btn waves-effect waves-light blue lighten-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn waves-effect waves-light red lighten-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
-              </span>
+            
+                <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a></span> &nbsp
+          
             <% end %>
 
           <% elsif song.status == "playing" %>
-            <span class="contain">
-              <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
-            </span>
+           
+              <span class="buttons"><button type="button" name="button" class=" upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class=" downvote thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a></span> &nbsp
+           
           <% else %> <!-- if song is played -->
-            <span class="contain">
-              <a class="btn-flat waves-effect waves-light amber accent-4 delete-song-show delete-song"><i class="material-icons">delete</i></a>
-              <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
-            </span>
+            
+             <span class="buttons"><button type="button" name="button" class=" upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class=" downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a></span> &nbsp
+          
           <% end %> <!-- end of if the playlist is public/private -->
         <% end %>  <!-- end of if the user is Host -->
       <% elsif (@access == "Guest") %> <!-- if the user is Guest -->
@@ -134,43 +138,44 @@
             <% if Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]) %>
             <% @vote_now = Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]).status %>
               <% if @vote_now == "up" %>
-              <span class="contain">
-                <span class="buttons"><button type="button" name="button" class="upvote btn-flat waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn waves-effect waves-light red lighten-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
-              </span>
+             
+                <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
+            
               <% elsif @vote_now == "down" %>
-                <span class="contain">
-                  <span class="buttons"><button type="button" name="button" class="upvote btn waves-effect waves-light blue lighten-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn-flat waves-effect waves-light red darken-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
-                </span>
+             
+                  <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
+            
               <% end %>
             <% else %>
-              <span class="contain">
-                <% if (User.find(song.user_id).id == session[:user_id]) %>
-                  <a class="btn-flat waves-effect waves-light amber accent-4 delete-song-show delete-song"><i class="material-icons">delete</i></a>
-                <% end %>
-                <span class="buttons"><button type="button" name="button" class="upvote btn waves-effect waves-light blue lighten-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn waves-effect waves-light red lighten-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
+            
+                
+                <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span> 
+                <% if (User.find(song.user_id).id == session[:user_id]) || @access == "Host" %>
+                      <a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <% end %>&nbsp
               </span>
             <% end %>
           <% elsif song.status == "playing" %>
-            <span class="contain">
-              <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
-            </span>
+          
+              <span class=" buttons"><button type="button" name="button" class="hidden upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote thumb_btn "><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
+           
           <% else %> <!-- if song is played -->
-            <span class="contain">
-              <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
-            </span>
+          
+              <span class=" buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class=" downvote thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
+        
           <% end %>
         <% else %> <!-- if playlist is public -->
-          <span class="contain">
-            <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
-          </span>
+       
+            <span class=" buttons"><button type="button" name="button" class=" upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class=" downvote thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
+        
         <% end %>
       <% else %> <!-- if the user is Viewer -->
-        <span class="contain">
-          <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
-        </span>
+       
+          <span class="hidden buttons"><button type="button" name="button" class=" upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class=" downvote thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
+       
       <% end %>
 
-      <span class="heart"><span class="netvote" id=<%=song.id%>><%= song.net_vote %></span>&nbsp<i class="fa fa-heart" style="font-size:12px"></i></span>
+      
 
     </div> <!-- ends the song div -->
 

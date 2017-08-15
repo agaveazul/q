@@ -18,9 +18,11 @@ $.ajax({
     method: 'get',
   }).done(function(data){
     console.log("Update song to playing");
-    $('.que').first().find('.buttons').addClass('hidden');
-    $('.que').first().find('a').css('display','none');
+    
+    $('.playing').first().addClass('played').removeClass('playing');
+    $('.played .fa-volume-down').removeClass('fa-volume-down').addClass('fa-check');
     $('.que').first().addClass('playing').removeClass('que');
+    $('.playing .fa-long-arrow-up').removeClass('fa-long-arrow-up').addClass('fa-volume-down');
   });
   setTimeout(function(){DZ.Event.subscribe('track_end', function(){
     $.ajax({

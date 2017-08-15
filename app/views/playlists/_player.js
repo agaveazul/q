@@ -6,7 +6,9 @@ window.dzAsyncInit = function() {
       channelUrl : 'http://localhost:3000/playlist/player',
       player : {
         container: 'd_player',
-        color: '0ab091',
+        color: 'EB00D4',
+
+layout: 'light',
         // format: "square",
         // height: "100%",
         width: "95%",
@@ -22,7 +24,9 @@ window.dzAsyncInit = function() {
       player : {
         container: 'd_player',
         height : 90,
-        color: '0ab091',
+        color: 'EB00D4',
+
+layout: 'light',
         onload : function(){}
       }
     })

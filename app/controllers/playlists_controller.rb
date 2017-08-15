@@ -17,6 +17,7 @@ class PlaylistsController < ApplicationController
     end
 
     @playlist_q = Playlist.find(params[:id])
+    @host = @playlist_q.authorizations.find_by(status: 'Host').user
     @playlist_q_songs = SuggestedSong.where(playlist_id: @playlist_q.id)
     @next_song_id = SuggestedSong.next_song_id(params[:id])
     @next_song_record = SuggestedSong.next_song_record(params[:id])
