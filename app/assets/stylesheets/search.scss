@@ -1,0 +1,213 @@
+// Place all the styles related to the search controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.search {
+	background-color: white;
+	border-bottom: 1px solid #dddddd;
+}
+.search__inner {
+	width: 55%;
+	margin: auto;
+	position: relative;
+}
+.search__input {
+	margin-top: 20px !important;
+	background-color: #f9f9f9 !important;
+	font-style: italic;
+	padding-left: 15px !important;
+	width: 85% !important;
+	border: 1px solid #dddddd !important;
+	border-top-left-radius: 50px !important;
+	border-bottom-left-radius: 50px !important;
+	font-size: .8em !important;
+	height: 35px !important;
+	transition: all 0s !important;
+}
+.search__input:focus {
+	box-shadow: none !important;
+}
+input.search__input:focus {
+	box-shadow: none;
+}
+input[placeholder] {
+	text-overflow: ellipsis;
+	color: #424242;
+}
+input::-moz-placeholder {
+	text-overflow: ellipsis;
+	color: #424242;
+}    
+input:-moz-placeholder {
+	text-overflow: ellipsis;
+	color: #424242;
+}      
+input:-ms-input-placeholder {
+	text-overflow: ellipsis;
+	color: #424242;
+} 
+#btn-search {
+	box-shadow: none;
+	height: 37px;
+	position: absolute;
+	top: 20px;
+	right: 0;
+	z-index: 10;
+	font-size: .8em;
+	font-weight: 500;
+	background: linear-gradient(to right, #f44295, #cc2cb4);
+	border-radius: 50px;
+}
+.main-content {
+	padding: 0px 15px;
+	background-color: #efefef;
+}
+.panel__head {
+	display: flex;
+	justify-content: space-between;
+}
+.row {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.card__panel {
+	width: 48% !important;
+	margin: 1%;
+	box-shadow: 0px 0px 4px #cccccc;
+	margin-top: 25px;
+	background-color: white;
+	border-radius: 5px;
+	padding: 20px 15px !important;
+}
+.photos {
+	margin-top: 20px;
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+.photos__h6 {
+	font-size: 1em;
+}
+.more {
+	font-weight: bold;
+	font-size: .7em;
+	letter-spacing: .1px;
+	word-spacing: .3px;
+	text-transform: uppercase;
+	background: linear-gradient(to right, #f44295, #cc2cb4);
+    -webkit-background-clip: text;  
+  	color: transparent;
+}
+.theme {
+	font-weight: bold;
+	font-size: .95em;
+	text-transform: uppercase;
+}
+.photos__elem {
+	margin-right: 7px;
+	margin-left: 7px;
+	width: 16.7%;
+}
+.photos__p {
+	margin: 0px;
+	font-size: .86em;
+	color: #828282;
+}
+.photos__h6 {
+	margin: 0px;
+	margin-top: 10px;
+	font-size: 1em;
+}
+.img-wrapper {
+	height : auto;
+	width: 98%;
+	margin: auto;
+}
+.img-wrapper img {
+	height : auto;
+	width: 100%;
+}
+#table {
+	width: 100% !important;
+	margin-left: 1%;
+	padding: 20px 0px !important;
+}
+#table .panel__head {
+	padding: 0px 15px;
+}
+.material-icons {
+	font-weight: light;
+	color: #f44295;
+}
+th {
+	font-weight: 100 !important;
+	text-transform: uppercase;
+	font-size: .9em;
+	color: grey;
+}
+.table {
+	margin-bottom: 50px;
+}
+th, td {
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+}
+.material-icons {
+	margin-right: 0 !important;
+	padding-left: 10px !important;
+}
+.add {
+	width: 5%;
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+	.photos__elem {
+		width: 20.5%;
+	}
+}
+@media (min-width: 480px) and (max-width: 767px) {
+	.card__panel {
+		width: 98% !important;
+	}
+	.search__inner {
+		width: 80%;
+	}
+}
+@media (min-width: 480px) and (max-width: 575px) {
+	#table {
+		font-size: 12px;
+	}
+	.material-icons {
+		font-size: 1.7em;
+	}
+}
+@media (max-width: 479px) {
+	body {
+		font-size: 12px;
+	}
+	.card__panel {
+		width: 98% !important;
+	}
+	#table {
+		font-size: 12px;
+	}
+	.search__inner {
+		width: 80%;
+	}
+	.search__input {
+		width: 90% !important;
+		height: 30px !important;
+	}
+	#btn-search {
+		height: 32px;
+	}
+	.photos__elem {
+		width: 19%;
+	}
+	.material-icons {
+		font-size: 1.5em;
+	}
+
+}
