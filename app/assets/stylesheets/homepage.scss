@@ -1,3 +1,14 @@
+$player-white: #7b8085;
+$blue: #2c4058;
+$blueLight: #666e78;
+$blueDeep: #08052b;
+$nav-grey: white;
+$left_gradient: #f84696;
+$right_gradient: #c51fa2;
+$ltr_gradient: linear-gradient(to right, $left_gradient, $right_gradient);
+$main_text: #444444;
+$info_text:#f1469c;
+
 * {
   color: $blue;
   font-family: "Montserrat-Regular";
