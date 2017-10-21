@@ -13,48 +13,196 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class='alternative-background'>
-
-    <div class="wrapper">
-
-
-      <nav class='nav_bar'>
-        <%= link_to root_path do %>
-          <%= image_tag("Q.png") %>
-        <% end %>
-        <p class="user_info">
-          <% if current_user %>
-          <%= link_to current_user.first_name, user_path(session[:user_id]) %><span class="nav-pipe"> | <span class="delete_user_id hidden"><%= session[:user_id] %></span></span>
-          <%= link_to "Log out", session_path(session[:user_id]), method: :delete %>
-          <% else %>
-          <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
-          <% end %>
-        </p>
-      </nav>
-      <div class="viewable-screen-front">
-
+  <body class="homepage">
+    <nav>
+      <div class="nav-wrapper">
         <div class="container">
-
-          <div class="intro">
-            <p class="intro-bio"><img class="queue" src="/assets/Q-250f07d1bf9986fa1909967c7cf916c78ac32b8f27c0093a8abf373de2e6b8ad.png" alt=""></p>
-          </div>
-
-      <% unless current_user %>
-          <div class="buttons-home">
-            <div><%= link_to 'Log in', new_session_path, class: 'btn logins' %></div>
-            <div><%= link_to "Sign Up", new_user_path, class: 'btn logins' %></div>
-          </div>
-      <% end %>
-
+          <a href="#" class="brand-logo wow swing"><img class="responsive-img" src="logoWhite.png" alt="#"><span>MUSIC</span></a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="hide-on-med-and-down search-form">
+            <li class="search">
+              <label for="search" class="textLabel left">SEARCH FOR PLAYLISTS</label>
+              <form>
+                <div class="input-field">
+                  <input id="search" type="search" required>
+                  <button type="submit" class="label-icon"><i class="material-icons">search</i></button>
+                  <i class="material-icons close">close</i>
+                </div>
+              </form>
+            </li>
+          </ul>
+          <ul class="right hide-on-med-and-down">
+            <li><a class="waves-effect waves-light" href="#">SIGN IN</a></li>
+            <li><a class="waves-effect waves-light" href="#">SIGN UP</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="#">SIGN IN</a></li>
+            <li><a href="#">SIGN UP</a></li>
+          </ul>
+          <a class="mobile icon1" href="#"><i class="material-icons">search</i></a>
+          <a class="mobile icon2" href="#"><i class="material-icons">person</i></a>
         </div>
       </div>
-      <%= yield %>
+    </nav>
+    <header class="header-section" id="header">
+      <div class="container">
+          <h1 class="center-align">LISTEN & FEEL</h1>
+          <p class="center-align">MUSIC CAN TELL MORE ABOUT YOURSELF</p>
+          <a class="radioAngle waves-effect" href="#whatIsQ"><i class="material-icons">keyboard_arrow_down</i></a>
+      </div>
+    </header>
+    <section class="whatIsQ" id="whatIsQ">
+      <div class="heading">
+        <h2 class="center-align">WHAT IS Q</h2>
+        <div class="container">
+          <div class="row">
+            <div class="col xl3 l6 m6 s12">
+              <div class="card waves-effect waves-yellow">
+                <h3>PLAYLIST</h3>
+                <p>Lorem ipsum is the dummy text for web and mobile text holder. It’s normally used to amkake the daily ui in 32015. But in 2300 they are fine to go and easy to concept. Golbal village is using this.</p>
+              </div>
+            </div>
+            <div class="col xl3 l6 m6 s12">
+              <div class="card waves-effect waves-purple">
+                <h3>SONGS</h3>
+                <p>Lorem ipsum is the dummy text for web and mobile text holder. It’s normally used to amkake the daily ui in 32015. But in 2300 they are fine to go and easy to concept. Golbal village is using this.</p>
+              </div>
+            </div>
+            <div class="col xl3 l6 m6 s12">
+              <div class="card waves-effect waves-teal">
+                <h3>VOTE</h3>
+                <p>Lorem ipsum is the dummy text for web and mobile text holder. It’s normally used to amkake the daily ui in 32015. But in 2300 they are fine to go and easy to concept. Golbal village is using this.</p>
+              </div>
+            </div>
+            <div class="col xl3 l6 m6 s12">
+              <div class="card waves-effect waves-green">
+                <h3>PLAY</h3>
+                <p>Lorem ipsum is the dummy text for web and mobile text holder. It’s normally used to amkake the daily ui in 32015. But in 2300 they are fine to go and easy to concept. Golbal village is using this.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="project project1 valign-wrapper">
+        <div class="container">
+          <div class="row">
+            <div class="col xl7 l7 m7 s12">
+              <img class="responsive-img" src="whatIsQFrame1.jpg" alt="#">
+            </div>
+            <div class="col xl5 l5 m5 s12">
+              <div class="textBlock">
+                <h2>MUSIC IS BELIEVE</h2>
+                <p class="subHeader">KEEPS ALIVE</p>
+                <p class="projectText">Lorem ipsum is the dummy text for web and mobile text holder. It’s normally used to amkake the daily ui in 32015. But in 2300 they are fine to go and easy to concept. Golbal village is using this.</p>
+                <a href="#!" class="rectangularButton waves-effect waves-purple">MORE DETAILS</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="project project2 valign-wrapper">
+        <div class="container">
+          <div class="row">
+            <div class="col xl7 l7 m7 s12 push-xl5 push-l5 push-m5">
+              <img class="responsive-img" src="whatIsQFrame2.jpg" alt="#">
+            </div>
+            <div class="col xl5 l5 m5 s12 pull-xl7 pull-l7 pull-m7">
+              <div class="textBlock">
+                <h2>MUSIC IS LOVE</h2>
+                <p class="subHeader">KEEPS ALIVE</p>
+                <p class="projectText">Lorem ipsum is the dummy text for web and mobile text holder. It’s normally used to amkake the daily ui in 32015. But in 2300 they are fine to go and easy to concept. Golbal village is using this.</p>
+                <a href="#!" class="rectangularButton waves-effect waves-teal">MORE DETAILS</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="whatOthersSaying" id="whatOthersSaying">
+      <div class="container">
+        <img class="responsive-img" src="whatOthersSayingIcon.png" alt="#">
+        <h2>WHAT OTHERS SAYING</h2>
+        <div class="owl-carousel owl-theme">
+          <div class="item">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+            <div class="user">
+              <span class="name">NICK TUDOR</span> - <span class="company">Company Inc.</span>
+            </div>
+          </div>
+          <div class="item">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+            <div class="user">
+              <span class="name">NICK TUDOR</span> - <span class="company">Company Inc.</span>
+            </div>
+          </div>
+          <div class="item">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+            <div class="user">
+              <span class="name">NICK TUDOR</span> - <span class="company">Company Inc.</span>
+            </div>
+          </div>
+      </div>
+      </div>
+    </section>
+    <section class="albums" id="albums">
+      <div class="container">
+        <div class="row">
+          <div class="col xl6 l12 m12 s12 textBlockContainer">
+            <div class="textBlock">
+              <h2>FEATURED ALBUMS</h2>
+              <p class="subHeader">A SUBTITLE TO START AGAIN</p>
+              <p class="projectText">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            </div>
+          </div>
+          <div class="col xl6 l12 m12 s12 albumsContainer">
+            <div class="row">
+              <div class="col xl6 l3 m6 s6">
+                <a href="#!" class="waves-effect waves-light">
+                  <img class="responsive-img" src="album1.jpg" alt="#">
+                  <div class="description">Closer</div>
+                </a>
+              </div>
+              <div class="col xl6 l3 m6 s6">
+                <a href="#!" class="waves-effect waves-light">
+                  <img class="responsive-img" src="album2.jpg" alt="#">
+                  <div class="description">Album Name</div>
+                </a>
+              </div>
+              <div class="col xl6 l3 m6 s6">
+                <a href="#!" class="waves-effect waves-light">
+                  <img class="responsive-img" src="album3.jpg" alt="#">
+                  <div class="description">Closer</div>
+                </a>
+              </div>
+              <div class="col xl6 l3 m6 s6">
+                <a href="#!" class="waves-effect waves-light">
+                  <img class="responsive-img" src="album4.jpg" alt="#">
+                  <div class="description">Album Name</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="footer" id="footer">
+      <div class="footer-copyright">
+        <div class="container">
+          <div class="logo"><img class="responsive-img" src="logoWhite.png" alt="#"><span>MUSIC</span></div>
+          <div class="socials">
+            <a class="social" href="#!"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a class="social" href="#!"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a class="social" href="#!"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          </div>
+          <div class="copyright">© 2014 Copyright Text</div>
+        </div>
+      </div>
+    </section>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../bower_components/owl.carousel/dist/owl.carousel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
 
-      <footer class="front-footer">
-        <p class="footer">© 2017 Q , Justin C. Stephen H. Richard S. Akshit S. Theresa S.</p>
-      </footer>
-    </div>
-
+    <script type="text/javascript" src="scripts.js"></script>
   </body>
 
 

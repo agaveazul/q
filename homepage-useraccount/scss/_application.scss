@@ -1,0 +1,84 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "node_modules/materialize-css/sass/materialize";
+
+ *,
+ *:before,
+ *:after {
+   box-sizing: border-box;
+ }
+
+ html {
+   height: 100%;
+   font-family: 'Montserrat', sans-serif;
+ }
+
+ body {
+   height: 100%
+ }
+
+ .wrapper {
+   min-height: 140%;
+   position: relative;
+ }
+
+ .wrapper-signup {
+   min-height: 160%;
+   position: relative;
+ }
+
+
+.front-footer {
+  width: 100%;
+  text-align: center;
+  background-color: rgba(55, 55, 55, 0.75);
+  padding: 3px 0;
+  margin-top: 10px;
+  color: white;
+  position: absolute;
+  bottom: -56px;
+}
+
+.alternative-background {
+   background: url("https://images.unsplash.com/photo-1470753937643-efeb931202a9") center center fixed no-repeat;
+   background-size: cover;
+ }
+
+ .login-background {
+    background: url("https://images.unsplash.com/photo-1470754260170-299cad39501f") center center fixed no-repeat;
+    background-size: cover;
+  }
+
+form {
+  border-radius: 100px;
+}
+
+img {
+  height: 50px;
+  width: auto;
+  display: inline-block;
+  margin-top: 4px;
+}
+button:focus{
+  background-color:transparent;
+}
+@media (max-width: 480px) {
+  .container{
+     width:100%;
+     padding-left:5%;
+     padding-right:5%;
+  }
+}
