@@ -14,8 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 //= require materialize
-
-
+//= require owl.carousel
 
 function getRandomInt() {
   min = Math.ceil(1);
@@ -59,6 +58,25 @@ function randomPhrase() {
 
 
 $(document).on("ready", function(){
+
+  $('.owl-carousel').owlCarousel({
+      loop:true,
+      nav:false,
+      responsive:{
+          0:{
+              items:1
+          },
+          600:{
+              items:1
+          },
+          1000:{
+              items:1
+          }
+      }
+  })
+
+  $(".button-collapse").sideNav();
+  $('ul.tabs').tabs();
 
   if ($('.song-list').html().trim() === '') {
     $('.search-container').css('display','none');
@@ -540,7 +558,7 @@ $(document).on("ready", function(){
 
   $('#make-public').on('click', function(){
     var status = $('#make-public').html().trim();
-   
+
     console.log('clicked');
     $.ajax({
       url: '/playlists/' + playlistId + '/update_publicity',
@@ -579,7 +597,7 @@ $(document).on("ready", function(){
       });
     }, 350);
   });
-  //materialize navbar dropdown 
+  //materialize navbar dropdown
   $('.user_info_dropdown').dropdown({
       inDuration: 300,
       outDuration: 225,
