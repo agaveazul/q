@@ -19,7 +19,7 @@
         <div class="container">
           <a href="#" class="brand-logo wow swing"><%= image_tag('logoWhite.png', class: "responsive-img") %><span>MUSIC</span></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-          <ul class="hide-on-med-and-down search-form">
+          <!-- <ul class="hide-on-med-and-down search-form">
             <li class="search">
               <label for="search" class="textLabel left">SEARCH FOR PLAYLISTS</label>
               <form>
@@ -30,7 +30,7 @@
                 </div>
               </form>
             </li>
-          </ul>
+          </ul> -->
           <ul class="right hide-on-med-and-down">
             <li><a class="waves-effect waves-light" href="#">SIGN IN</a></li>
             <li><a class="waves-effect waves-light" href="#">SIGN UP</a></li>
@@ -104,7 +104,7 @@
         <div class="container">
           <div class="row">
             <div class="col xl7 l7 m7 s12 push-xl5 push-l5 push-m5">
-              <img class="responsive-img" src="whatIsQFrame2.jpg" alt="#">
+              <%= image_tag('whatIsQFrame2.jpg', class: "responsive-img") %>
             </div>
             <div class="col xl5 l5 m5 s12 pull-xl7 pull-l7 pull-m7">
               <div class="textBlock">
@@ -120,7 +120,7 @@
     </section>
     <section class="whatOthersSaying" id="whatOthersSaying">
       <div class="container">
-        <img class="responsive-img" src="whatOthersSayingIcon.png" alt="#">
+        <%= image_tag('whatOthersSayingIcon.png', class: "responsive-img") %>
         <h2>WHAT OTHERS SAYING</h2>
         <div class="owl-carousel owl-theme">
           <div class="item">
@@ -158,25 +158,25 @@
             <div class="row">
               <div class="col xl6 l3 m6 s6">
                 <a href="#!" class="waves-effect waves-light">
-                  <img class="responsive-img" src="album1.jpg" alt="#">
+                  <%= image_tag('album1.jpg', class: "responsive-img") %>
                   <div class="description">Closer</div>
                 </a>
               </div>
               <div class="col xl6 l3 m6 s6">
                 <a href="#!" class="waves-effect waves-light">
-                  <img class="responsive-img" src="album2.jpg" alt="#">
+                  <%= image_tag('album2.jpg', class: "responsive-img") %>
                   <div class="description">Album Name</div>
                 </a>
               </div>
               <div class="col xl6 l3 m6 s6">
                 <a href="#!" class="waves-effect waves-light">
-                  <img class="responsive-img" src="album3.jpg" alt="#">
+                  <%= image_tag('album3.jpg', class: "responsive-img") %>
                   <div class="description">Closer</div>
                 </a>
               </div>
               <div class="col xl6 l3 m6 s6">
                 <a href="#!" class="waves-effect waves-light">
-                  <img class="responsive-img" src="album4.jpg" alt="#">
+                  <%= image_tag('album4.jpg', class: "responsive-img") %>
                   <div class="description">Album Name</div>
                 </a>
               </div>
@@ -188,7 +188,7 @@
     <section class="footer" id="footer">
       <div class="footer-copyright">
         <div class="container">
-          <div class="logo"><img class="responsive-img" src="logoWhite.png" alt="#"><span>MUSIC</span></div>
+          <div class="logo"><img class="responsive-img" src="assets/img/logoWhite.png" alt="#"><span>MUSIC</span></div>
           <div class="socials">
             <a class="social" href="#!"><i class="fa fa-facebook" aria-hidden="true"></i></a>
             <a class="social" href="#!"><i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -198,13 +198,5 @@
         </div>
       </div>
     </section>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="../bower_components/owl.carousel/dist/owl.carousel.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
-
-    <script type="text/javascript" src="scripts.js"></script>
   </body>
-
-
-
 </html>

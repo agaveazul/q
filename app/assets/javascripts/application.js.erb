@@ -12,9 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 //= require materialize
 //= require owl.carousel
+//= require_tree .
+
 
 function getRandomInt() {
   min = Math.ceil(1);
@@ -55,32 +56,6 @@ function randomPhrase() {
     return 'Your song was successfully added, now go vote it up the Q!'
   }
 };
-
-
-$(document).on("ready", function(){
-
-  $('.owl-carousel').owlCarousel({
-      loop:true,
-      nav:false,
-      responsive:{
-          0:{
-              items:1
-          },
-          600:{
-              items:1
-          },
-          1000:{
-              items:1
-          }
-      }
-  })
-
-  $(".button-collapse").sideNav();
-  $('ul.tabs').tabs();
-
-  if ($('.song-list').html().trim() === '') {
-    $('.search-container').css('display','none');
-  }
 
   var regExp = /\d+/
   if(regExp.exec(window.location.pathname) != null) {

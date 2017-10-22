@@ -72,8 +72,8 @@ form {
 }
 
 img {
-  height: 50px;
-  width: 30px;
+  // height: 50px;
+  // width: 30px;
   display: inline-block;
   margin-top: 4px;
 }
@@ -266,7 +266,7 @@ h2{
     }
   }
   .header-section{
-    background: url(assets/img/headerBG1.jpg) center no-repeat;
+    background: image-url('headerBG1.jpg') center no-repeat;
     background-attachment: fixed;
     background-size: cover;
     position: relative;
@@ -365,28 +365,28 @@ h2{
         }
       }
       .col:nth-of-type(1) .card h3{
-        background: url(assets/img/whatIsQSprite.png) no-repeat;
+        background: image-url('whatIsQSprite.png') no-repeat;
         background-position: 15px 30px;
         @media (max-width: 600px){
           background-position: 15px 15px;
         }
       }
       .col:nth-of-type(2) .card h3{
-        background: url(assets/img/whatIsQSprite.png) no-repeat;
+        background: image-url('whatIsQSprite.png') no-repeat;
         background-position: 15px -187px;
         @media (max-width: 600px){
 
         }
       }
       .col:nth-of-type(3) .card h3{
-        background: url(assets/img/whatIsQSprite.png) no-repeat;
+        background: image-url('whatIsQSprite.png') no-repeat;
         background-position: 15px -390px;
         @media (max-width: 600px){
 
         }
       }
       .col:nth-of-type(4) .card h3{
-        background: url(assets/img/whatIsQSprite.png) no-repeat;
+        background: image-url('whatIsQSprite.png') no-repeat;
         background-position: 15px -585px;
         @media (max-width: 600px){
 
@@ -456,13 +456,13 @@ h2{
         }
       }
       &.project1{
-        background: url(assets/img/whatIsQBg1.jpg) center left no-repeat;
+        background: image-url('whatIsQBg1.jpg') center left no-repeat;
         @media(max-width: 600px){
           padding-bottom: 70px;
         }
       }
       &.project2{
-        background: url(assets/img/whatIsQBg2.jpg) center right no-repeat;
+        background: image-url('whatIsQBg2.jpg') center right no-repeat;
       }
       &.project1, &.project2{
         @media (max-width: 1090px){
@@ -524,7 +524,7 @@ h2{
     margin-top: 120px;
     padding-top: 120px;
     margin-bottom: 120px;
-    background: url(assets/img/whatOthersSayingBG.jpg) no-repeat center;
+    background: image-url('whatOthersSayingBG.jpg') no-repeat center;
     background-size: cover;
     background-attachment: fixed;
     @media (max-width: 650px){
