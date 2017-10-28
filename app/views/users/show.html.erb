@@ -1,4 +1,165 @@
-<div class="buttons-user party-buttons">
+<div class="profile">
+  <!-- <nav>
+    <div class="nav-wrapper">
+      <div class="prof left">Profile</div>
+      <a href="#!" class="brand-logo center"><img src="assets/img/logoPurple.png" alt="#" class="responsive-img"></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!">one</a></li>
+        <li><a href="#!">two</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">three</a></li>
+      </ul>
+      <ul class="right hide-on-med-and-down">
+        <li>
+          <a class="dropdown-button left" href="#!" data-activates="dropdown1">
+            <img src="assets/img/user.jpg" alt="#" class="responsive-img">
+            <div class="info">
+              <div class="name left">Willium</div><i class="material-icons right">expand_more</i>
+              <div class="edit left">Edit</div>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+
+      </ul>
+    </div>
+  </nav> -->
+  <section class="manProfile">
+    <div class="container">
+      <figure>
+        <!-- <img src="assets/img/user.jpg" alt="#" class="responsive-img"> -->
+        <figcaption>
+          <%= @user.first_name%> <%= @user.last_name%>
+          <!-- <a href="#!"> -->
+          <img src="assets/img/noteIcon.png" class="responsive-img" alt="#"></a>
+          <div class="stats">
+            <div class="hosted"><%= @hosted.count %> Hosted Parties</div>
+            <div class="guest"><%= @guest.count %> Guest Parties</div>
+          </div>
+        </figcaption>
+      </figure>
+      <div class="links">
+        <%= link_to "Host a Party", new_playlist_path, class: 'purpleButton' %>
+        <%= link_to "Join a Party", join_path, class: 'transparentButton' %>
+      </div>
+    </div>
+  </section>
+  <section class="parties">
+    <div class="row">
+      <div class="col xl2 l3 m4 s12">
+        <div class="partiesHeader partiess">PARTIES</div>
+        <ul class="tabs">
+          <li class="tab"><a class="active" href="#test1">Hosted Parties (<%= @hosted.count %>)</a></li>
+          <li class="tab"><a href="#test2">Guest Parties (<%= @guest.count %>)</a></li>
+        </ul>
+      </div>
+      <div class="col xl10 l9 m8 s12">
+        <div id="test1">
+          <div class="partiesHeader clearfix">
+            <div class="floatLeft">Name <i class="fa fa-sort-desc" aria-hidden="true"></i></div>
+            <div class="floatRight">Date <i class="fa fa-sort-desc" aria-hidden="true"></i></div>
+          </div>
+
+          <% @hosted.each do |playlist| %>
+            <%= link_to playlist_path(playlist) do %>
+              <div class="partyBlock clearfix">
+                <div class="floatRight">
+                  <% d = playlist.created_at%>
+                  <%= d.strftime("%d %b %Y")%><br>
+                  <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </div>
+                <div class="floatLeft">
+                  <div class="partyPhoto floatLeft">
+                    <img src='<%= playlist.album_art %>' class="img-responsive" >
+                  </div>
+                  <div class="partyInfo">
+                    <div class="name"><%= playlist.name%></div>
+                    <div class="about1"><%=playlist.suggested_song_ids.count%> songs</div>
+                    <div class="about2 truncate"><%= playlist.theme %></div>
+                    <div class="about3">Invite Code: <span><%= playlist.access_code %></span></div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div id="test2">
+          <div class="partiesHeader clearfix">
+            <div class="floatLeft">Name <i class="fa fa-sort-desc" aria-hidden="true"></i></div>
+            <div class="floatRight">Date <i class="fa fa-sort-desc" aria-hidden="true"></i></div>
+          </div>
+
+          <% @guest.each do |playlist|%>
+            <%= link_to playlist_path(playlist) do %>
+              <div class="partyBlock clearfix">
+                <div class="floatRight">
+                  <% d = playlist.created_at%>
+                  <%= d.strftime("%d %b %Y")%><br>
+                  <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </div>
+                <div class="floatLeft">
+                  <div class="partyPhoto floatLeft">
+                    <img src='<%= playlist.album_art %>' class="img-responsive" >
+                  </div>
+                  <div class="partyInfo">
+                    <div class="name"><%= playlist.name%></div>
+                    <div class="about1"><%=playlist.suggested_song_ids.count%> songs</div>
+                    <div class="about2 truncate"><%= playlist.theme %></div>
+                    <div class="about3">Invite Code: <span><%= playlist.access_code %></span></div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+          <!-- <div class="partyBlock clearfix">
+            <div class="floatRight">
+              5 May 2017<br>
+              <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </div>
+            <div class="floatLeft">
+              <div class="partyPhoto floatLeft">
+                <img src="assets/img/album1.jpg" class="img-responsive" alt="#">
+              </div>
+              <div class="partyInfo">
+                <div class="name">House Party</div>
+                <div class="about1">14 songs, 1hr 24mins</div>
+                <div class="about2 truncate">Lorem Ipsum is kind of Description here to go</div>
+                <div class="about3">Invite Code: <span>20157</span></div>
+              </div>
+            </div>
+          </div> -->
+
+
+
+           <!-- <Playlist id: 5, name: "Halloween Party", created_at: "2017-10-25 22:43:21", updated_at: "2017-10-25 22:43:21", uri: nil, description: "", theme: "Dance", access_code: 521758, public: false, album_art: "https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimag...", song_limit: 5> -->
+
+          <!-- <% @hosted.each do |playlist|%>
+            <div class="playlist-block">
+              <%= link_to playlist_path(playlist) do %>
+              <div class='hosted-playlist' playlist-id="<%=playlist.id%>">
+                <img src='<%= playlist.album_art %>' class="playlist_image">
+                <li class="hosteduser-playlist">  <span class="playlist-title"><%= playlist.name %> </span> <br> <%= playlist.theme %> <br> Code: <%= playlist.access_code %> </li>
+              </div>
+              <% end %>
+            <span class='edit-delete'><span class="guestlist"><%= link_to "Guestlist", '#modal1' %> |</span> <span class="edits"> <%= link_to "Edit", edit_playlist_path(playlist) %> | <%= link_to "Delete", playlist_path(playlist), method: :delete %> </span></span>
+            </div>
+          <% end %> -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script> -->
+
+  <!-- <script type="text/javascript" src="scripts.js"></script> -->
+</div>
+
+
+
+<!-- <div class="buttons-user party-buttons">
   <div><%= link_to "Host a Party", new_playlist_path, class: 'btn parties host-button' %></div>
   <div><%= link_to "Join a Party", join_path, class: 'btn parties join-button' %></div>
 </div>
