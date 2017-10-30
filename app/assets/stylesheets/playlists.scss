@@ -576,28 +576,28 @@ button.downvote.btn.darken-2 {
    font-size: 0.8rem;
  }
 
- footer {
-  width: 100%;
-  text-align: center;
-  background-color: rgba(55, 55, 55, 0.75);
-  padding: 3px 0;
-  // bottom: -402px;
-  // position: absolute;
-  margin-top: 10px;
-  color: white;
-  position: absolute;
-  bottom: 0;
-  font-size: 9px;
-  }
-  .song-listing{
-    line-height: 2.5rem;
-    font-size: 20px;
-    margin-left: 1%;
-    width: 100%;
-    display: inline-block;
-    opacity: 0.7;
-    position: relative;
-  }
+ // footer {
+ //  width: 100%;
+ //  text-align: center;
+ //  background-color: rgba(55, 55, 55, 0.75);
+ //  padding: 3px 0;
+ // bottom: -402px;
+ // position: absolute;
+ //  margin-top: 10px;
+ //  color: white;
+ //  position: absolute;
+ //  bottom: 0;
+ //  font-size: 9px;
+ //  }
+ //  .song-listing{
+ //    line-height: 2.5rem;
+ //    font-size: 20px;
+ //    margin-left: 1%;
+ //    width: 100%;
+ //    display: inline-block;
+ //    opacity: 0.7;
+ //    position: relative;
+ //  }
 }
 
 @media (min-width: 600px) and (max-width: 999px) {
@@ -641,29 +641,6 @@ button.downvote.btn.darken-2 {
    display: inline-block;
  }
 
- footer {
-  width: 100%;
-  text-align: center;
-  background-color: rgba(55, 55, 55, 0.75);
-  padding: 3px 0;
-  // bottom: -402px;
-  // position: absolute;
-  margin-top: 10px;
-  color: white;
-  position: absolute;
-  bottom: 0;
-  font-size: 12px;
-  }
-
-  .song-listing{
-    line-height: 2.5rem;
-    font-size: 20px;
-    margin-left: 1%;
-    width: 49%;
-    display: inline-block;
-    opacity: 0.7;
-    position: relative;
-  }
 }
 
 @media (min-width: 0px) and (max-width: 1100px) {
@@ -733,20 +710,6 @@ button.downvote.btn.darken-2 {
    opacity: 0.7;
    position: relative;
  }
-
- footer {
-  width: 100%;
-  text-align: center;
-  background-color: rgba(55, 55, 55, 0.75);
-  padding: 3px 0;
-  // bottom: -402px;
-  // position: absolute;
-  margin-top: 10px;
-  color: white;
-  position: absolute;
-  bottom: 0;
-  font-size: 12px;
-}
 
  .buttons-user {
    margin-top: 8px;
